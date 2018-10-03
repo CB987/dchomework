@@ -1,0 +1,6 @@
+name = input("What's your name? ")
+food = input("What's your favorite food? ")
+activity1 = input("What's your favorite activity? ")
+activity2 = input("What's something else you like to do? ")
+madLib = ("My name is %s and my favorite food is %s. I enjoy %s and %s in my free time.") % (name, food, activity1, activity2)
+print(madLib)

@@ -1,0 +1,1 @@
+The number of characters that appear in the books but not on the show is not 0 or 2124, so it must be 1927.
