@@ -21,9 +21,28 @@ let coolerCities = [];
 //     } 
 // }
 
+//Chris':
+// function isCityCool(city) {
+//   return city['temperature'] < 70 
+//   }
+// function coolCities(citiesArray) {
+//   let resultingCities = [];
+
+//   citiesArray.forEach(function(city) {
+//     if (isCityCool(city)) {
+//       resultingCities.push(city);
+//     }
+//   });
+//   coolCities(cities)
+//   return resultingCities;
+// }
+// return citiesArray
+//     .filter(isCityCool)
+//     .map(getName);
+
 function cityTemp(x) {
     return x.temperature < 80.0
     }
-
-coolerCities = cities.filter(cityTemp);
-console.log(coolerCities);
+ return cities.filter(cityTemp);
+// coolerCities = cities.filter(cityTemp);
+// console.log(coolerCities);

@@ -1,33 +1,19 @@
-// Given an array of people's names:
+// Given an array of array of products:
 
-var people = [
-  'Dom',
-  'Lyn',
-  'Kirk',
-  'Autumn',
-  'Trista',
-  'Jesslyn',
-  'Kevin',
-  'John',
-  'Eli',
-  'Juan',
-  'Robert',
-  'Keyur',
-  'Jason',
-  'Che',
-  'Ben'
+var products = [
+  { name: 'Basketball', price: 12.00 },
+  { name: 'Tennis Racquet', price: 66.00 },
+  { name: 'Tennis Balls', price: 9.00 },
+  { name: 'Tennis Balls', price: 9.00 }
 ];
-// Print out 'Good Job, {{name}}!' for each person's name, one on a line.
+// Sort the array by price.
 
+let productsByPrice = [];
 
-
-// function cityName(x) {
-//     cityNames.push(x.name);
-// }
-
-function encourage(x) {
-    console.log(`Good job, ${x}!`);
+function priceIt(x) {
+  return x.price;
 }
 
-// cities.forEach(cityName);
-people.forEach(encourage);
+productsByPrice = products.map(priceIt).sort();
+
+console.log(productsByPrice);
