@@ -15,24 +15,38 @@ document.body.appendChild(header);
 // let myHeader = document.createElement('h1');
 // let myDiv = document.createElement('div');
 // let myImage = document.createElement('img');
+
+const modalElement = document.querySelector('[data-modal]');
+
+// function createLargeImage(imageInfo) {
+//     const myDiv = document.createElement('div');
+//     myDiv.classList.add('picture-frame');
+//     const image = createImage(imageInfo);
+//     myDiv.appendChild(image);
+//     return myDiv;
+// }
 const outputElement = document.querySelector('[data-output]');
+
 // function that generates an img element
 function createImage(imageInfo) {
     const myImage = document.createElement('img');
-   
+    
     myImage.setAttribute('src', imageInfo.url);
     myImage.setAttribute('alt', imageInfo.alt);
     myImage.setAttribute('title', imageInfo.alt);
     // the element that got clicked is accessibly as `even.ttarget`
     // and i can read the `src` attribute
     myImage.addEventListener('click', function (event) {
-        console.log(event.target.src);
+        // console.log(event.target.src);
         outputElement.setAttribute('src', event.target.src);
+        modalElement.classList.toggle('modal-hidden');
+        // remove is more specific
+        // modalElement.classList.remove('modal-hidden');
     })
     return myImage;
 }
 
-// function that generates the thumbnail div
+// function that generates the thumbnail div with image
 function createThumbnail(imageInfo) {
     const myDiv = document.createElement('div');
     myDiv.classList.add('thumbnail-item');
@@ -70,16 +84,26 @@ imageInfo.forEach(function(singleImageInfo) {
 
 // //create a div for the large image
 // function createLargeImage(clickMe) {
-//     const myDiv = document.createElement('div');
-//     myDiv.classList.add('picture-frame');
-//     // const image = createImage(imageURL)
-//     myDiv.appendChild(createImage(clickMe));
-//     return myDiv;
-// }
+    //     const myDiv = document.createElement('div');
+    //     myDiv.classList.add('picture-frame');
+    //     // const image = createImage(imageURL)
+    //     myDiv.appendChild(createImage(clickMe));
+    //     return myDiv;
+    // }
+    
+    // template for asking the browser for soemthing with a data attribute
+    // const outputElement = document.querySelector('[data-output]');
+    
+    // const largeImage = createLargeImage(event);
+    // document.body.appendChild(largeImage);
+    
+    //create image for the large image
 
-// template for asking the browser for soemthing with a data attribute
-// const outputElement = document.querySelector('[data-output]');
 
-// const largeImage = createLargeImage(event);
-// document.body.appendChild(largeImage);
-
+window.addEventListener('keydown', function(addEventListener) {
+    // console.log('wefjnsdk') 
+    // key: "Escape"
+    if (event.keyCode === 27) {
+        modalElement.classList.toggle('modal-hidden');
+    }
+})

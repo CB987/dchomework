@@ -14,6 +14,7 @@ html, body {
     padding: 0;
     height: 100%;
     width: 100%;
+    background-color: cornflowerblue;
 }
 
 .thumbnail-container {
@@ -73,6 +74,6 @@ html, body {
 }
 
 .modal-hidden {
-    /* display: none; */
-    visibility: hidden;
+    display: none; 
+    /* visibility: hidden; */
 }
