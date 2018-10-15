@@ -1,10 +1,17 @@
-const IMAGES = [
+const imageInfo = [
     //'images/IMG_0150.jpg',
     {url:'images/IMG_0049.jpg', alt: 'another pic of the outside'},
     {url:'images/IMG_0166.jpg', alt: 'another pic of the outside'},
     {url:'images/IMG_0047.jpg', alt: 'another pic of the outside'},
 ]
 
+function createHeader () {
+    const myHeader = document.createElement('h1');
+    myHeader.textContent = 'InstaClone';
+    return myHeader;
+}
+const header = createHeader();
+document.body.appendChild(header);
 // let myHeader = document.createElement('h1');
 // let myDiv = document.createElement('div');
 // let myImage = document.createElement('img');
@@ -40,19 +47,21 @@ function createThumbnailContainer() {
     myDiv.classList.add('thumbnail-container');
     myDiv.setAttribute('data-container', '');
     return myDiv;
-}
+} 
+// and deploy thumbnail-container div
+const thumbnailContainer = createThumbnailContainer();
+document.body.appendChild(thumbnailContainer);
+
 // let x = createThumbnailContainer();
 // document.body.appendChild(x);
 // const thumbnailContainer = document.querySelector('[data-container]');
 
-const thumbnailContainer = createThumbnailContainer();
-document.body.appendChild(thumbnailContainer);
 // don't these need to be inside the thumb-nail container div?
 
 imageInfo.forEach(function(singleImageInfo) {
     // debugger
     let testThumb = createThumbnail(singleImageInfo);
-    document.body.appendChild(testThumb);
+    thumbnailContainer.appendChild(testThumb);
 });
 
 // thumbnailContainer.appendChild(createThumbnail(IMAGES[]));
