@@ -39,7 +39,7 @@ function createImage(imageInfo) {
     myImage.addEventListener('click', function (event) {
         // console.log(event.target.src);
         outputElement.setAttribute('src', event.target.src);
-        modalElement.classList.toggle('modal-hidden');
+        modalElement.classList.remove('modal-hidden');
         // remove is more specific
         // modalElement.classList.remove('modal-hidden');
     })
@@ -100,10 +100,19 @@ imageInfo.forEach(function(singleImageInfo) {
     //create image for the large image
 
 
-window.addEventListener('keydown', function(addEventListener) {
+window.addEventListener('keydown', function(event) {
     // console.log('wefjnsdk') 
     // key: "Escape"
     if (event.keyCode === 27) {
-        modalElement.classList.toggle('modal-hidden');
+        modalElement.classList.add('modal-hidden');
     }
+})
+//make it so that you can also dismiss the modal image by 
+// clicking on it.
+modalElement.addEventListener('click', function () {
+    // console.log(event.target.src);
+    // outputElement;
+    modalElement.classList.add('modal-hidden');
+    // remove is more specific
+    // modalElement.classList.remove('modal-hidden');
 })
