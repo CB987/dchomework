@@ -5,48 +5,31 @@ const imageInfo = [
     {url:'images/IMG_0047.jpg', alt: 'another pic of the outside'},
 ]
 
+//any querySelectors needed that haven't yet been created
+// const modalElement = document.querySelector('[data-modal]');
+const outputElement = document.querySelector('[data-output]');
+
+
+// header
 function createHeader () {
     const myHeader = document.createElement('h1');
     myHeader.textContent = 'InstaClone';
     return myHeader;
 }
-const header = createHeader();
-document.body.appendChild(header);
-// let myHeader = document.createElement('h1');
-// let myDiv = document.createElement('div');
-// let myImage = document.createElement('img');
+document.body.appendChild(createHeader());
 
-const modalElement = document.querySelector('[data-modal]');
+// first section: the thumbnails
+// 3rd wrap:  thumbnail-container for all thumbnails
+function createThumbnailContainer() {
+    const myDiv = document.createElement('div');
+    myDiv.classList.add('thumbnail-container');
+    myDiv.setAttribute('data-container', '');
+    return myDiv;
+} //and deploy
+const thumbnailContainer = createThumbnailContainer();
+document.body.appendChild(thumbnailContainer);
 
-// function createLargeImage(imageInfo) {
-//     const myDiv = document.createElement('div');
-//     myDiv.classList.add('picture-frame');
-//     const image = createImage(imageInfo);
-//     myDiv.appendChild(image);
-//     return myDiv;
-// }
-const outputElement = document.querySelector('[data-output]');
-
-// function that generates an img element
-function createImage(imageInfo) {
-    const myImage = document.createElement('img');
-    
-    myImage.setAttribute('src', imageInfo.url);
-    myImage.setAttribute('alt', imageInfo.alt);
-    myImage.setAttribute('title', imageInfo.alt);
-    // the element that got clicked is accessibly as `even.ttarget`
-    // and i can read the `src` attribute
-    myImage.addEventListener('click', function (event) {
-        // console.log(event.target.src);
-        outputElement.setAttribute('src', event.target.src);
-        modalElement.classList.remove('modal-hidden');
-        // remove is more specific
-        // modalElement.classList.remove('modal-hidden');
-    })
-    return myImage;
-}
-
-// function that generates the thumbnail div with image
+//first section, second-innermost wrap: thumbnail-item div with image
 function createThumbnail(imageInfo) {
     const myDiv = document.createElement('div');
     myDiv.classList.add('thumbnail-item');
@@ -55,64 +38,64 @@ function createThumbnail(imageInfo) {
     return myDiv;
 }
 
-// create thumbnail-container div
-function createThumbnailContainer() {
-    const myDiv = document.createElement('div');
-    myDiv.classList.add('thumbnail-container');
-    myDiv.setAttribute('data-container', '');
-    return myDiv;
-} 
-// and deploy thumbnail-container div
-const thumbnailContainer = createThumbnailContainer();
-document.body.appendChild(thumbnailContainer);
-
-// let x = createThumbnailContainer();
-// document.body.appendChild(x);
-// const thumbnailContainer = document.querySelector('[data-container]');
-
-// don't these need to be inside the thumb-nail container div?
+// first section, innermost element: img
+function createImage(imageInfo) {
+    const myImage = document.createElement('img');
+    myImage.setAttribute('src', imageInfo.url);
+    myImage.setAttribute('alt', imageInfo.alt);
+    myImage.setAttribute('title', imageInfo.alt);
+    myImage.addEventListener('click', function (event) {
+        outputElement.setAttribute('src', event.target.src);
+        modalElement.classList.remove('modal-hidden');
+    })
+    return myImage;
+}
 
 imageInfo.forEach(function(singleImageInfo) {
-    // debugger
     let testThumb = createThumbnail(singleImageInfo);
     thumbnailContainer.appendChild(testThumb);
 });
 
-// thumbnailContainer.appendChild(createThumbnail(IMAGES[]));
-// thumbnailContainer.appendChild(createThumbnail(IMAGES[1]));
-// thumbnailContainer.appendChild(createThumbnail(IMAGES[2]));
-
-// //create a div for the large image
-// function createLargeImage(clickMe) {
-    //     const myDiv = document.createElement('div');
-    //     myDiv.classList.add('picture-frame');
-    //     // const image = createImage(imageURL)
-    //     myDiv.appendChild(createImage(clickMe));
-    //     return myDiv;
-    // }
-    
-    // template for asking the browser for soemthing with a data attribute
-    // const outputElement = document.querySelector('[data-output]');
-    
-    // const largeImage = createLargeImage(event);
-    // document.body.appendChild(largeImage);
-    
-    //create image for the large image
+//second section: modal
+// outermost element, modal modal-hidden class
+function createModalElement() {
+    const myDiv = document.createElement('div');
+    myDiv.classList.add('modal');
+    myDiv.classList.add('modal-hidden');
+    myDiv.setAttribute('data-modal', '');
+    return myDiv;
+} //and deploy
+const modalElement = createModalElement();
+document.body.appendChild(modalElement);
 
 
-window.addEventListener('keydown', function(event) {
-    // console.log('wefjnsdk') 
-    // key: "Escape"
+// modal, second-innermost element: picture-frame div with image
+function createPictureFrame(imageInfo) {
+    const myDiv = document.createElement('div');
+    myDiv.classList.add('picture-frame');
+    const image = createImage(imageInfo);
+    myDiv.appendChild(image);
+    return myDiv;
+}
+
+// modal: innermost element: image
+function createOutputElement(imageInfo) {
+    const myImage = document.createElement('img');
+    myImage.setAttribute('data-output', '');
+    myImage.setAttribute('alt', imageInfo.alt);
+    myImage.setAttribute('title', imageInfo.alt);
+    return myImage;
+}
+// const outputElement = createOutputElement();
+// modalElement.appendChild(outputElement);
+
+// modal functionality
+window.addEventListener('keydown', function (event) {
     if (event.keyCode === 27) {
         modalElement.classList.add('modal-hidden');
     }
 })
-//make it so that you can also dismiss the modal image by 
-// clicking on it.
+
 modalElement.addEventListener('click', function () {
-    // console.log(event.target.src);
-    // outputElement;
     modalElement.classList.add('modal-hidden');
-    // remove is more specific
-    // modalElement.classList.remove('modal-hidden');
 })
