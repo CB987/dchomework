@@ -88,27 +88,60 @@ function createImage(imageInfo) {
     return myImage;
 }
 
-function main() {
+// function main() {
     imageInfo.forEach(function(singleImageInfo) {
     let testThumb = createThumbnail(singleImageInfo);
     thumbnailContainer.appendChild(testThumb);
     });
+    
+    
     // modal functionality
+    // remove modal if hit escape key
     window.addEventListener('keydown', function (event) {
         if (event.keyCode === 27) {
             modalElement.classList.add('modal-hidden');
         } 
     })
+    //remove modal if click while open
     modalElement.addEventListener('click', function     () {
         modalElement.classList.add('modal-hidden');
     })
-    window.addEventListener('keydown', function     (event) {
-    if (event.keyCode === 37) {
-        console.log('previous')
+    // use R/L arrows to scroll through pics in modal mode from pic array of objects
+    function getCurrentIndex(currentURL) {
+        // let index = imageInfo.map(function (i) {
+        //     return i.url;
+        // }).indexOf(currentURL)
+        let index = imageInfo.map(i => i,url).indexOf(currentURL);
+        return index;
     }
-    else if (event.keyCode === 39) {
-        console.log('next')
-    }})
-}
+    function getNextImage(currentURL){
+        let index = getCurrentIndex(currentURL);
+        index++;
+        if (index === imageInfo.length) {
+            index = 0;
+        }
+        return imageInfo[index].url;
+    }
+    function getPrevImage(currentURL) {
+        let index = getCurrentIndex(currentURL);
+        index--;
+        if (index < 0) {
+            index === imageInfo.length - 1;
+        }
+        return imageInfo[index].url;
+    }
+    window.addEventListener('keydown', function (event) {
+        if (event.keyCode === 37) {
+            console.log('previous');
+            let current = outputElement.getAttribute('src');
+            let previous = getPrevImage(current);
+            outputElement.setAttribute('src', previous);
+        } else if (event.keyCode === 39) {
+            console.log('next');
+            let current = outputElement.getAttribute('src');
+            let next = getNextImage(current);
+            outputElement.setAttribute('src', next);
+        }})
+// }
 
-main();
+// main();
