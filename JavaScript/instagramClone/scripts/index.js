@@ -53,7 +53,7 @@ function createOutputElement() {
 const outputElement = createOutputElement();
 pictureFrame.appendChild(outputElement);
 
-// first section: the thumbnails
+// thumbnail section: the thumbnails
 // 3rd wrap:  thumbnail-container for all thumbnails
 function createThumbnailContainer() {
     const myDiv = document.createElement('div');
@@ -64,7 +64,7 @@ function createThumbnailContainer() {
 const thumbnailContainer = createThumbnailContainer();
 document.body.appendChild(thumbnailContainer);
 
-//first section, second-innermost wrap: thumbnail-item div with image
+//thumbnail section, second-innermost wrap: thumbnail-item div with image
 function createThumbnail(imageInfo) {
     const myDiv = document.createElement('div');
     myDiv.classList.add('thumbnail-item');
@@ -73,7 +73,7 @@ function createThumbnail(imageInfo) {
     return myDiv;
 }
 
-// first section, innermost element: img
+// thumbnail section, innermost element: img
 function createImage(imageInfo) {
     const myImage = document.createElement('img');
     myImage.setAttribute('src', imageInfo.url);
@@ -88,20 +88,27 @@ function createImage(imageInfo) {
     return myImage;
 }
 
-imageInfo.forEach(function(singleImageInfo) {
+function main() {
+    imageInfo.forEach(function(singleImageInfo) {
     let testThumb = createThumbnail(singleImageInfo);
     thumbnailContainer.appendChild(testThumb);
-});
-
-
-
-// modal functionality
-window.addEventListener('keydown', function (event) {
-    if (event.keyCode === 27) {
+    });
+    // modal functionality
+    window.addEventListener('keydown', function (event) {
+        if (event.keyCode === 27) {
+            modalElement.classList.add('modal-hidden');
+        } 
+    })
+    modalElement.addEventListener('click', function     () {
         modalElement.classList.add('modal-hidden');
+    })
+    window.addEventListener('keydown', function     (event) {
+    if (event.keyCode === 37) {
+        console.log('previous')
     }
-})
+    else if (event.keyCode === 39) {
+        console.log('next')
+    }})
+}
 
-modalElement.addEventListener('click', function () {
-    modalElement.classList.add('modal-hidden');
-})
+main();
