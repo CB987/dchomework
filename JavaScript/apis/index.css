@@ -1,0 +1,49 @@
+ /* border-box hack */
+
+html {
+    box-sizing: border-box;
+}
+*, *:before, *after {
+    box-sizing: inherit;
+}
+
+/* chef aquino's special sauce */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(156,39,176,0.2); 
+    /* */
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.button {
+    display: flex;
+
+    padding: 10px;
+    float: left;
+    font-size: 20px;
+    margin: 20px;
+    background-color: goldenrod;
+    border: none;
+    color: indigo;
+    display: inline-block;
+    border-radius: 12px;
+    justify-content: center;
+}
+
+.pic-container {
+    display: flex;
+    height: 150px;
+    width: auto;
+}
+
+.pic {
+    max-height: 100%;
+    max-width: 100%
+}
