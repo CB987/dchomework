@@ -14,35 +14,35 @@
 
     <form 
         action='https://dc-coffeerun.herokuapp.com/api/coffeeOrders'
-        method='POST'>
+        method='POST'
+        data-form
+    >
         <label>
             coffee:
-            <input type='text' name='coffee' placeholder='lifeblood'>
+            <input type='text' name='coffee' placeholder='lifeblood' value='lifeblood'>
         </label>
         <br>
         <label>
             email:
-            <input type='email' name='emailAddress' placeholder='coffee@me.com'>
+            <input type='email' name='emailAddress' placeholder='coffee@me.com' value='buffy@slayer.com'>
         </label>
         <br>
         <label>
             flavor:
-            <input type='text' name='flavor' placeholder='coffee-flavored'>
+            <input type='text' name='flavor' placeholder='coffee-flavored' value='hot chocolate'>
         </label>
         <br>
         <label>
             size:
-            <input type='text' name='size' placeholder='not enough, large, enough'>
+            <input type='text' name='size' placeholder='not enough, large, enough' value='the most'>
         </label>
         <br>
         <label>
             strength
-            <input type='number' name='strength' min='01' max='99'>
+            <input type='number' name='strength' min='01' max='99' value='88'>
         </label>
         <br><br>
         <input type='submit'>
-
-
     </form>
 
     <script src='scripts/index.js'></script>
