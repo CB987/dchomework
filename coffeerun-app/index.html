@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>coffeeMe</title>
     <link href="https://fonts.googleapis.com/css?family=Belgrano" rel="stylesheet">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css'>
     <link rel='stylesheet' href='stylesheets/index.css'>
 </head>
 <body>
     <h1>Coffee: the only reason to get up in the morning</h1>
-
+    <!-- <div data-notification></div> -->
+    <div class='content'>
+        <div class='form-container'>
     <form 
         action='https://dc-coffeerun.herokuapp.com/api/coffeeOrders'
         method='POST'
@@ -44,7 +46,18 @@
         <br><br>
         <input type='submit'>
     </form>
+    </div>
+    <div class='pic-container'><img src='coffee.jpg'>
+    </div>
+    </div>
+    <br><br>
+    <div data-message></div>
+    <!-- <p class='error error-hidden' data-error>Oh hell, there was an issue and your order didn't work. I know you haven't had enough coffee for this bullshit, but please try again.</p> -->
+    <br><br>
+    <button data-trigger>see all pending orders</button>
+    <h2>Pending Orders:</h2>
+    <ul data-output>
 
-    <script src='scripts/index.js'></script>
+    </ul>
+    <script src='scripts/index.js'></script> 
 </body>
-</html>
