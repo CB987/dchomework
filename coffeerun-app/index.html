@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,56 +10,52 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css'>
     <link rel='stylesheet' href='stylesheets/index.css'>
 </head>
+
 <body>
     <h1>Coffee: the only reason to get up in the morning</h1>
     <!-- <div data-notification></div> -->
-    <div class='content'>
-        <div class='form-container'>
-    <form 
-        action='https://dc-coffeerun.herokuapp.com/api/coffeeOrders'
-        method='POST'
-        data-form
-    >
-        <label>
-            coffee:
-            <input type='text' name='coffee' placeholder='lifeblood' value='lifeblood'>
-        </label>
-        <br>
-        <label>
-            email:
-            <input type='email' name='emailAddress' placeholder='coffee@me.com' value='buffy@slayer.com'>
-        </label>
-        <br>
-        <label>
-            flavor:
-            <input type='text' name='flavor' placeholder='coffee-flavored' value='hot chocolate'>
-        </label>
-        <br>
-        <label>
-            size:
-            <input type='text' name='size' placeholder='not enough, large, enough' value='the most'>
-        </label>
-        <br>
-        <label>
-            strength
-            <input type='number' name='strength' min='01' max='99' value='88'>
-        </label>
-        <br><br>
-        <button type='submit'>submit order</button>
-        <button data-reset-button type='reset'>reset form</button>
-    </form>
-    </div>
-    <div class='pic-container'><img src='coffee.jpg'>
-    </div>
-    </div>
+    <section class='content'>
+        <div class='container'>
+            <form action='' method='POST' data-form>
+                <label>
+                    coffee:
+                    <input type='text' name='coffee' placeholder='lifeblood' value='lifeblood'>
+                </label>
+                <br>
+                <label>
+                    email:
+                    <input type='email' name='emailAddress' placeholder='coffee@me.com' value='buffy@slayer.com'>
+                </label>
+                <br>
+                <label>
+                    flavor:
+                    <input type='text' name='flavor' placeholder='coffee-flavored' value='hot chocolate'>
+                </label>
+                <br>
+                <label>
+                    size:
+                    <input type='text' name='size' placeholder='not enough, large, enough' value='the most'>
+                </label>
+                <br>
+                <label>
+                    strength
+                    <input type='number' name='strength' min='01' max='99' value='88'>
+                </label>
+                <br><br>
+                <button type='submit'>submit order</button>
+                <button data-reset-button type='reset'>reset form</button>
+            </form>
+        </div>
+        <div class='pic-container'><img src='coffee.jpg'>
+        </div>
+    </section>
     <br><br>
     <div data-message></div>
     <!-- <p class='error error-hidden' data-error>Oh hell, there was an issue and your order didn't work. I know you haven't had enough coffee for this bullshit, but please try again.</p> -->
     <br><br>
     <button data-load-orders>see all pending orders</button>
     <h2>Pending Orders:</h2>
-    <section data-order-area>
-        <p></p>
-    </section>
-    <script src='scripts/index.js'></script> 
+    <ul data-order-area>
+    </ul>
+    <script src='scripts/index.js'></script>
 </body>
