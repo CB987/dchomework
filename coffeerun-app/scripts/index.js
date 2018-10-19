@@ -2,9 +2,12 @@
 const orderForm = document.querySelector('[data-form]');
 const notificationArea = document.querySelector('[data-message]');
 // console.log(modalElement); 
-const pendingButton = document.querySelector('[data-trigger]');
-const pendingOrders = document.querySelector('[data-output]');
+const resetButton = document.querySelector('[data-reset-button]');
+const pendingButton = document.querySelector('[data-load-orders]');
+const pendingOrders = document.querySelector('[data-order-area]');
 // Helper functions
+
+
 function handleSubmit(event) {
     event.preventDefault();
     console.log('coffee is the point');
@@ -34,20 +37,26 @@ function handleSubmit(event) {
     }).then(r => r.json())
     .then((orderInfo) => {  //instant arrow function!*****
         //check order info for errors
-        if (orderInfo.name === "Validation Error") {
-            successMessage(orderInfo.message);
+        // && is a falsey hunter
+        if (orderInfo.name && orderInfo.name === "Validation Error") {
+            successMessage('Nope.');
         } else {
             successMessage('Your coffee is brewing! Life has meaning.');
         }
      }) //wrap in an anonymous function
 } 
 
-
+function confirmReset(e) {
+    let doesWantToReset = confirm('fo sho?');
+    if (!doesWantToReset) {
+        e.preventDefault();
+    }
+}
 
 // Main event listeners
 console.log('more coffee');
 orderForm.addEventListener('submit', handleSubmit);
-
+resetButton.addEventListener('click', confirmReset);
 // When the server sends the response after you submit an order, add some DOM elements to the page, letting the user know that the order was successfully submitted.
 function successMessage(successText) {
     //create a div

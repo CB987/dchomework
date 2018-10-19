@@ -31,6 +31,8 @@ img {
 button {
   background-color: rgb(92, 46, 13);
   color: tan;
+  border: none;
+  outline: 1px solid black;
 }
 
 .modal {

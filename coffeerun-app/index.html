@@ -44,7 +44,8 @@
             <input type='number' name='strength' min='01' max='99' value='88'>
         </label>
         <br><br>
-        <input type='submit'>
+        <button type='submit'>submit order</button>
+        <button data-reset-button type='reset'>reset form</button>
     </form>
     </div>
     <div class='pic-container'><img src='coffee.jpg'>
@@ -54,10 +55,10 @@
     <div data-message></div>
     <!-- <p class='error error-hidden' data-error>Oh hell, there was an issue and your order didn't work. I know you haven't had enough coffee for this bullshit, but please try again.</p> -->
     <br><br>
-    <button data-trigger>see all pending orders</button>
+    <button data-load-orders>see all pending orders</button>
     <h2>Pending Orders:</h2>
-    <ul data-output>
-
-    </ul>
+    <section data-order-area>
+        <p></p>
+    </section>
     <script src='scripts/index.js'></script> 
 </body>
